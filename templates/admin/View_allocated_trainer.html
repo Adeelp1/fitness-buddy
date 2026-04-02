@@ -1,0 +1,165 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="666" border="1">
+    <tr>
+      <th width="76" scope="col">SLNO</th>
+      <th width="69" scope="col">Name</th>
+      <th width="68" scope="col">Email</th>
+      <th width="73" scope="col">Phone</th>
+      <th width="170" scope="col">Photo</th>
+      <th width="170" scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.BATCH_TRAINER.TRAINER.name }}</td>
+      <td>{{ i.BATCH_TRAINER.TRAINER.email }}</td>
+      <td>{{ i.BATCH_TRAINER.TRAINER.p_no }}</td>
+        <td><img src="{{ i.BATCH_TRAINER.TRAINER.photo }}" alt="" height="100" width="100"/></td>
+      <td><a href="/deleteAllocatedTrainer/{{ i.id }}">Remove Trainer</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Allocated Trainers</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)),
+                    url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1');
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+    }
+
+    .container {
+        width: 90%;
+        margin: 50px auto;
+        background: rgba(0, 0, 0, 0.85);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+    }
+
+    h2 {
+        text-align: center;
+        color: #ff0000;
+        margin-bottom: 25px;
+        letter-spacing: 2px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th {
+        background: #ff0000;
+        color: white;
+        padding: 12px;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    tr:hover {
+        background: rgba(255, 0, 0, 0.1);
+        transition: 0.3s;
+    }
+
+    img {
+        border-radius: 10px;
+        border: 2px solid #ff0000;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        background: transparent;
+        border: 1px solid #ff0000;
+        color: #ff0000;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #ff0000;
+        color: #fff;
+    }
+
+    .no-data {
+        text-align: center;
+        padding: 20px;
+        color: #aaa;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Allocated Trainers</h2>
+
+    <form id="form1" name="form1" method="post" action="">
+        <table>
+            <tr>
+                <th>SLNO</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Photo</th>
+                <th>Action</th>
+            </tr>
+
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.BATCH_TRAINER.TRAINER.name }}</td>
+                <td>{{ i.BATCH_TRAINER.TRAINER.email }}</td>
+                <td>{{ i.BATCH_TRAINER.TRAINER.p_no }}</td>
+                <td>
+                    <img src="{{ i.BATCH_TRAINER.TRAINER.photo }}" height="80" width="80"/>
+                </td>
+                <td>
+                    <a href="/deleteAllocatedTrainer/{{ i.id }}" class="btn">Remove</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="no-data">No trainers allocated</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

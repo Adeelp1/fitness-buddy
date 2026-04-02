@@ -1,0 +1,268 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">SLNO</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Photo</th>
+      <th scope="col">DOB</th>
+      <th scope="col">BIO</th>
+      <th scope="col">Level</th>
+      <th scope="col">Login</th>
+      <th scope="col">Batch</th>
+      <th scope="col">Action</th>
+        <th scope="col">Chat</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.USER.name }}</td>
+      <td>{{ i.USER.email }}</td>
+      <td>{{ i.USER.phone }}</td>
+      <td>{{ i.USER.gender }}</td>
+      <td><img src="{{ i.USER.photo }}" alt="" height="100" width="100"/></td>
+      <td>{{ i.USER.dob }}</td>
+      <td>{{ i.USER.bio }}</td>
+      <td>{{ i.USER.level }}</td>
+      <td>{{ i.USER.LOGIN }}</td>
+      <td>{{ i.USER.BATCH.batch }}</td>
+        <td>
+            <p><a href="/tipsAdd/{{ i.id }}">Add Tips</a></p>
+            <p><a href="/tipsView">View Tips </a></p>
+            <p><a href="/workoutVideoAdd/{{ i.id }}">Add Workout Video</a></p>
+            <p><a href="/workoutVideoView/{{ i.id }}">view Workout Video</a></p>
+            <p><a href="/add_diet_plans/{{ i.id }}">Add Diet Plans</a></p>
+        </td>
+    <td>
+        <a href="/chat/{{ i.USER.id }}">chat</a>
+    </td>
+    </tr>
+      {% endfor %}
+  </table>
+  
+</form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Members Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b') no-repeat center/cover;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    padding: 10px;
+    width: 250px;
+    border-radius: 8px;
+    border: none;
+}
+
+.filter {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-left: 10px;
+}
+
+/* CARD GRID */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* PROFILE */
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #ff4d4d;
+}
+
+/* DETAILS */
+.details {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.details p {
+    margin: 5px 0;
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 3px;
+    font-size: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-primary { background: #007bff; }
+.btn-success { background: #28a745; }
+.btn-warning { background: #ffc107; color: black; }
+.btn-danger { background: #dc3545; }
+.btn-chat { background: #17a2b8; }
+
+.btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.actions {
+    margin-top: 10px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SEARCH + FILTER -->
+<div class="header">
+    <input type="text" id="searchInput" class="search-box" placeholder="Search members...">
+
+    <div>
+        <select id="batchFilter" class="filter">
+            <option value="">All Batches</option>
+            {% for i in data %}
+            <option value="{{ i.USER.BATCH.batch }}">{{ i.USER.BATCH.batch }}</option>
+            {% endfor %}
+        </select>
+
+        <select id="levelFilter" class="filter">
+            <option value="">All Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+    </div>
+</div>
+
+<!-- MEMBERS GRID -->
+<div class="container" id="memberContainer">
+
+{% for i in data %}
+<div class="card"
+     data-name="{{ i.USER.name|lower }}"
+     data-batch="{{ i.USER.BATCH.batch }}"
+     data-level="{{ i.USER.level }}">
+
+    <div class="profile">
+        <img src="{{ i.USER.photo }}">
+        <h3>{{ i.USER.name }}</h3>
+        <p>{{ i.USER.level }}</p>
+    </div>
+
+    <div class="details">
+        <p><strong>Email:</strong> {{ i.USER.email }}</p>
+        <p><strong>Phone:</strong> {{ i.USER.phone }}</p>
+        <p><strong>Gender:</strong> {{ i.USER.gender }}</p>
+        <p><strong>DOB:</strong> {{ i.USER.dob }}</p>
+        <p><strong>Batch:</strong> {{ i.USER.BATCH.batch }}</p>
+    </div>
+
+    <div class="actions">
+        <a href="/tipsAdd/{{ i.id }}" class="btn btn-primary">Tips</a>
+        <a href="/tipsView" class="btn btn-success">View Tips</a>
+        <a href="/workoutVideoAdd/{{ i.id }}" class="btn btn-warning">Add Video</a>
+        <a href="/workoutVideoView/{{ i.id }}" class="btn btn-danger">Videos</a>
+        <a href="/add_diet_plans/{{ i.id }}" class="btn btn-primary">Diet</a>
+        <a href="/chat/{{ i.USER.id }}" class="btn btn-chat">Chat</a>
+    </div>
+
+</div>
+{% endfor %}
+
+</div>
+
+<!-- SEARCH + FILTER SCRIPT -->
+<script>
+const searchInput = document.getElementById("searchInput");
+const batchFilter = document.getElementById("batchFilter");
+const levelFilter = document.getElementById("levelFilter");
+const cards = document.querySelectorAll(".card");
+
+function filterCards() {
+    const search = searchInput.value.toLowerCase();
+    const batch = batchFilter.value;
+    const level = levelFilter.value;
+
+    cards.forEach(card => {
+        const name = card.getAttribute("data-name");
+        const cardBatch = card.getAttribute("data-batch");
+        const cardLevel = card.getAttribute("data-level");
+
+        const matchSearch = name.includes(search);
+        const matchBatch = batch === "" || cardBatch === batch;
+        const matchLevel = level === "" || cardLevel === level;
+
+        if (matchSearch && matchBatch && matchLevel) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+searchInput.addEventListener("keyup", filterCards);
+batchFilter.addEventListener("change", filterCards);
+levelFilter.addEventListener("change", filterCards);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">SLNO</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Photo</th>
+      <th scope="col">DOB</th>
+      <th scope="col">BIO</th>
+      <th scope="col">Level</th>
+      <th scope="col">Login</th>
+      <th scope="col">Batch</th>
+      <th scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }} </td>
+      <td>&nbsp;{{ i.name }}</td>
+      <td> {{ i.email }}&nbsp;</td>
+      <td> {{ i.phone }}&nbsp;</td>
+      <td> {{ i.gender }}&nbsp;</td>
+      <td>&nbsp;{{ i.photo }}</td>
+      <td>&nbsp;{{ i.dob }}</td>
+      <td>{{ i.bio }}&nbsp;</td>
+      <td>&nbsp;{{ i.level }}</td>
+      <td>&nbsp;{{ i.LOGIN }}</td>
+      <td>&nbsp;{{ i.BATCH }}</td>
+        <td><p><a href="/AllocateUserToTrainer/{{ i.id }}">Alocate to Trainer</a></p>
+        <p><a href="/viewAllocatedTrainer/{{ i.id }}">View allocated trainer </a></p>
+    </tr>
+      {% endfor %}
+  </table>
+  
+</form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Users</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(120,0,0,0.9)),
+                    url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1') no-repeat center/cover;
+        color: #fff;
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #ff4d4d;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(0,0,0,0.7);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th {
+        background: #ff4d4d;
+        padding: 12px;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 14px;
+    }
+
+    tr:hover {
+        background: rgba(255,255,255,0.1);
+        transition: 0.3s;
+    }
+
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #ff4d4d;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 10px;
+        margin: 3px;
+        text-decoration: none;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 12px;
+        transition: 0.3s;
+    }
+
+    .btn-assign {
+        background: #28a745;
+    }
+
+    .btn-view {
+        background: #007bff;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    .badge {
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+    }
+
+    .level {
+        background: #ffc107;
+        color: #000;
+    }
+
+    .gender {
+        background: #17a2b8;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Gym Users</h1>
+
+    <table>
+        <tr>
+            <th>SLNO</th>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Level</th>
+            <th>Batch</th>
+            <th>Action</th>
+        </tr>
+
+        {% for i in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+
+            <td>
+                <img src="{{ i.photo }}" alt="User">
+            </td>
+
+            <td>{{ i.name }}</td>
+            <td>{{ i.email }}</td>
+            <td>{{ i.phone }}</td>
+
+            <td>
+                <span class="badge gender">{{ i.gender }}</span>
+            </td>
+
+            <td>{{ i.dob }}</td>
+
+            <td>
+                <span class="badge level">{{ i.level }}</span>
+            </td>
+
+            <td>{{ i.BATCH.batch }}</td>
+
+            <td>
+                <a href="/AllocateUserToTrainer/{{ i.id }}" class="btn btn-assign">
+                    Assign
+                </a>
+                <a href="/viewAllocatedTrainer/{{ i.id }}" class="btn btn-view">
+                    View Trainer
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
+</html>

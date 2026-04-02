@@ -1,0 +1,163 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">Sl NO</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Venue</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td> {{ forloop.counter }} &nbsp</td>
+      <td> {{ i.title }}&nbsp;</td>
+      <td>&nbsp;{{ i.description }}</td>
+      <td>&nbsp;{{ i.venue }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>&nbsp;{{ i.time }}</td>
+      <td><a href="/editEvent/{{ i.id }}">EDIT</a><a href="/viewEvent_delete/{{ i.id }}">Remove</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Events</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(rgba(0,0,0,0.9), rgba(120,0,0,0.9)),
+                    url('https://images.unsplash.com/photo-1515169067865-5387ec356754');
+        background-size: cover;
+        color: white;
+    }
+
+    .container {
+        width: 90%;
+        margin: 50px auto;
+        background: rgba(0,0,0,0.7);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255,0,0,0.3);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ff4d4d;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th {
+        background: #ff1a1a;
+        padding: 12px;
+        font-weight: 600;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    tr:hover {
+        background: rgba(255,0,0,0.1);
+    }
+
+    a {
+        text-decoration: none;
+        padding: 6px 12px;
+        margin: 2px;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    a[href*="editEvent"] {
+        background: #28a745;
+        color: white;
+    }
+
+    a[href*="editEvent"]:hover {
+        background: #218838;
+    }
+
+    a[href*="delete"] {
+        background: #dc3545;
+        color: white;
+    }
+
+    a[href*="delete"]:hover {
+        background: #c82333;
+    }
+
+    @media (max-width: 768px) {
+        table {
+            font-size: 12px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Event List</h2>
+
+    <form id="form1" name="form1" method="post" action="">
+      <table>
+        <tr>
+          <th>Sl No</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Venue</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Action</th>
+        </tr>
+
+        {% for i in data %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ i.title }}</td>
+          <td>{{ i.description }}</td>
+          <td>{{ i.venue }}</td>
+          <td>{{ i.date }}</td>
+          <td>{{ i.time }}</td>
+          <td>
+            <a href="/editEvent/{{ i.id }}">Edit</a>
+            <a href="/viewEvent_delete/{{ i.id }}">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+
+      </table>
+    </form>
+</div>
+
+</body>
+</html>

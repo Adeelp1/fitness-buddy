@@ -1,0 +1,364 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/logins_post">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <th scope="row">user name</th>#}
+{#      <td><label for="textfield"></label>#}
+{#      <input type="text" name="textfield" id="textfield" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <th scope="row">password</th>#}
+{#      <td><label for="textfield2"></label>#}
+{#      <input type="text" name="textfield2" id="textfield2" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="login" /></th>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome! Login</title>
+<style type="text/css">
+/* ===== BACKGROUND IMAGE – unchanged ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    background: url('https://static.vecteezy.com/system/resources/thumbnails/026/781/389/small/gym-interior-background-of-dumbbells-on-rack-in-fitness-and-workout-room-photo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Soft overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #b89fff;
+}
+
+/* Form card */
+#form1 {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    z-index: 2;
+    margin: 20px;
+}
+
+/* ===== DARK THEME CARD ===== */
+#form1 table {
+    width: 100%;
+    background: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    box-shadow: 0 25px 50px -8px rgba(0,0,0,0.8);
+    padding: 40px 28px 40px;
+    border: none;
+    text-align: center;
+    /* Force block display for modern layout */
+    display: block;
+}
+
+/* Make tbody and rows block to stack labels above inputs */
+#form1 tbody {
+    display: block;
+    width: 100%;
+}
+
+#form1 tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;         /* space between fields */
+    width: 100%;
+}
+
+/* Reset table cell styles */
+#form1 th, #form1 td {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    text-align: left;
+}
+
+/* Style labels (original th) */
+#form1 th {
+    font-weight: 600;
+    font-size: 14px;
+    color: #bbbbbb;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 6px;         /* space below label */
+}
+
+/* Input cells */
+#form1 td {
+    padding: 0;
+}
+
+/* Input fields – more prominent */
+#form1 input[type="text"] {
+    width: 100%;
+    padding: 16px 24px;
+    border: 2px solid #333333;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: 0.2s;
+    background: #2a2a2a;
+    color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+#form1 input[type="text"]:focus {
+    border-color: #a384ff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(163, 132, 255, 0.2);
+}
+
+/* Password field hint */
+#form1 input[type="text"]#textfield2 {
+    letter-spacing: 0.2ch;
+}
+
+/* Special styling for the last row (button) */
+#form1 tr:last-child {
+    align-items: center;
+    margin-bottom: 0;
+}
+#form1 tr:last-child th {
+    text-align: center;
+    padding: 10px 0 0 0;
+    display: block;
+    width: auto;
+}
+#form1 tr:last-child input[type="submit"] {
+    background: #a384ff;
+    border: none;
+    border-radius: 40px;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #121212;
+    width: auto;
+    min-width: 200px;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(163, 132, 255, 0.3);
+    transition: 0.15s;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+#form1 tr:last-child input[type="submit"]:hover {
+    background: #b89fff;
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 0 15px 30px rgba(163, 132, 255, 0.5);
+}
+
+/* ===== HEADINGS VIA PSEUDO-ELEMENTS ===== */
+#form1 table::before {
+    content: "Welcome!";
+    display: block;
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+}
+
+#form1 tbody::before {
+    content: "LOGIN";
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color: #a384ff;
+    letter-spacing: 2px;
+    margin: 0 0 25px 0;
+    text-align: center;
+}
+
+#form1 tbody::after {
+    content: "Still don't have an account? Register now";
+    display: block;
+    font-size: 15px;
+    color: #cccccc;
+    margin: 30px 0 20px 0;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-align: center;
+}
+#form1 tbody::after:hover {
+    color: #a384ff;
+    text-decoration: underline;
+}
+
+/* Hide original table attributes */
+#form1 table[border="1"] {
+    border: none;
+}
+#form1 table[width="200"] {
+    width: 100%;
+}
+
+/* Validation styles */
+.validation-error {
+    border: 2px solid #ff6b6b !important;
+    background: #3a2a2a !important;
+}
+
+.error-message {
+    color: #ff8a8a;
+    font-size: 12px;
+    margin: 5px 0 0 0;           /* adjusted for stacked layout */
+    text-align: left;
+    animation: shake 0.3s;
+}
+
+@keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(4px); }
+    40% { transform: translateX(-4px); }
+    60% { transform: translateX(2px); }
+    80% { transform: translateX(-2px); }
+}
+</style>
+</head>
+
+<body>
+<!-- ORIGINAL FORM – COMPLETELY UNCHANGED -->
+<form id="form1" name="form1" method="post" action="/logins_post">
+  <table width="200" border="1">
+    <tr>
+      <th scope="row">user name</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+    </tr>
+    <tr>
+      <th scope="row">password</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" /></td>
+    </tr>
+    <tr>
+    <td colspan="2" style="text-align:right;">
+        <a href="/forgotpassword" style="color:#a384ff; font-size:14px; text-decoration:none;">
+        Forgot Password?
+        </a>
+    </td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="login" /></th>
+    </tr>
+  </table>
+</form>
+
+<script>
+{#(function() {#}
+{#    // ===== ADD CLICKABLE FACEBOOK LINK =====#}
+{#    const table = document.querySelector('#form1 table');#}
+{#    const fbDiv = document.createElement('div');#}
+{#    fbDiv.textContent = 'facebook';#}
+{#    fbDiv.style.marginTop = '15px';#}
+{#    fbDiv.style.padding = '10px 0';#}
+{#    fbDiv.style.borderTop = '1px solid #444444';#}
+{#    fbDiv.style.color = '#8a9fd1';#}
+{#    fbDiv.style.fontWeight = '500';#}
+{#    fbDiv.style.cursor = 'pointer';#}
+{#    fbDiv.style.transition = 'color 0.2s';#}
+{#    fbDiv.style.textAlign = 'center';   /* center the facebook text */#}
+{#    fbDiv.addEventListener('mouseenter', () => fbDiv.style.color = '#aab9e6');#}
+{#    fbDiv.addEventListener('mouseleave', () => fbDiv.style.color = '#8a9fd1');#}
+{#    fbDiv.addEventListener('click', () => window.location.href = '/facebook-login');#}
+{#    table.appendChild(fbDiv);#}
+{##}
+{#    // Make "Register now" clickable#}
+{#    const tbody = document.querySelector('#form1 tbody');#}
+{#    tbody.addEventListener('click', function(e) {#}
+{#        const rect = tbody.getBoundingClientRect();#}
+{#        const y = e.clientY - rect.top;#}
+{#        // Click anywhere in the bottom area (where ::after sits)#}
+{#        if (y > rect.height - 50) {#}
+{#            window.location.href = '/register';#}
+{#        }#}
+{#    });#}
+{##}
+{#    // ===== VALIDATION =====#}
+{#    const form = document.getElementById('form1');#}
+{#    const user = document.getElementById('textfield');#}
+{#    const pass = document.getElementById('textfield2');#}
+{##}
+{#    function removeError(input) {#}
+{#        input.classList.remove('validation-error');#}
+{#        if (input.nextSibling && input.nextSibling.classList && input.nextSibling.classList.contains('error-message')) {#}
+{#            input.parentNode.removeChild(input.nextSibling);#}
+{#        }#}
+{#    }#}
+{##}
+{#    function showError(input, msg) {#}
+{#        removeError(input);#}
+{#        input.classList.add('validation-error');#}
+{#        const err = document.createElement('div');#}
+{#        err.className = 'error-message';#}
+{#        err.textContent = msg;#}
+{#        input.parentNode.insertBefore(err, input.nextSibling);#}
+{#    }#}
+{##}
+{#    function validate() {#}
+{#        let ok = true;#}
+{#        if (!user.value.trim()) {#}
+{#            showError(user, 'user name cannot be empty');#}
+{#            ok = false;#}
+{#        } else removeError(user);#}
+{#        if (!pass.value.trim()) {#}
+{#            showError(pass, 'password cannot be empty');#}
+{#            ok = false;#}
+{#        } else removeError(pass);#}
+{#        return ok;#}
+{#    }#}
+{##}
+{#    user.addEventListener('blur', function() {#}
+{#        if (!this.value.trim()) showError(this, 'user name cannot be empty');#}
+{#        else removeError(this);#}
+{#    });#}
+{#    pass.addEventListener('blur', function() {#}
+{#        if (!this.value.trim()) showError(this, 'password cannot be empty');#}
+{#        else removeError(this);#}
+{#    });#}
+{#    user.addEventListener('input', function() {#}
+{#        if (this.value.trim()) removeError(this);#}
+{#    });#}
+{#    pass.addEventListener('input', function() {#}
+{#        if (this.value.trim()) removeError(this);#}
+{#    });#}
+{##}
+{#    form.addEventListener('submit', function(e) {#}
+{#        if (!validate()) e.preventDefault();#}
+{#    });#}
+{#    document.getElementById('button').addEventListener('click', function(e) {#}
+{#        if (!validate()) e.preventDefault();#}
+{#    });#}
+{#})();#}
+</script>
+</body>
+</html>

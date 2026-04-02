@@ -1,0 +1,170 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/editEvent_post/{{ data.id }}">
+  <table width="200" border="1">
+    <tr>
+      <th scope="row"><p>Title</p></th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield1" id="textfield" value="{{ data.title }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><label for="textarea"></label>
+      <textarea name="textarea" id="textarea" cols="45" rows="5">{{ data.description }}</textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">Venue</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield2" id="textfield" value="{{ data.venue }}"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Date</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield3" id="textfield" value="{{ data.date }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Time</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield4" id="textfield" value="{{ data.time }}" /></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Edit" /></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html> -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Edit Event</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(rgba(0,0,0,0.9), rgba(26,0,0,0.95)),
+                    url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1') no-repeat center center/cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+    }
+
+    .container {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 35px;
+        border-radius: 15px;
+        width: 420px;
+        box-shadow: 0 0 25px rgba(255,0,0,0.6);
+        border: 1px solid rgba(255,0,0,0.3);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+        color: #ff0000;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+        color: #ffffff;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #330000;
+        border-radius: 8px;
+        outline: none;
+        font-size: 14px;
+        background: #1a0000;
+        color: #ffffff;
+        transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #ff0000;
+        box-shadow: 0 0 10px rgba(255,0,0,0.6);
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        background: #ff0000;
+        color: #ffffff;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        letter-spacing: 1px;
+    }
+
+    input[type="submit"]:hover {
+        background: #cc0000;
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(255,0,0,0.6);
+    }
+</style>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/editEvent_post/{{ data.id }}">
+    
+    <div class="container">
+        <h2>Edit Event</h2>
+
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="textfield1" value="{{ data.title }}" required />
+        </div>
+
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="textarea" rows="4" required>{{ data.description }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Venue</label>
+            <input type="text" name="textfield2" value="{{ data.venue }}" required />
+        </div>
+
+        <div class="form-group">
+            <label>Date</label>
+            <input type="date" name="textfield3" value="{{ data.date }}" required />
+        </div>
+
+        <div class="form-group">
+            <label>Time</label>
+            <input type="time" name="textfield4" value="{{ data.time }}" required />
+        </div>
+
+        <input type="submit" name="button" value="Update Event" />
+    </div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">SLNO</th>
+      <th scope="col">Batch</th>
+      <th scope="col">From Time</th>
+      <th scope="col">To Time</th>
+      <th scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.BATCH.batch }}</td>
+      <td>{{ i.BATCH.from_time }}</td>
+      <td>{{ i.BATCH.to_time }}</td>
+      <td><a href="/removeAllocatedBatch/{{ i.id }}">Remove</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Allocated Batches</title>
+
+<style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+
+      background: 
+          linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)),
+          url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1600&auto=format&fit=crop');
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 950px;
+        background: rgba(0, 0, 0, 0.75);
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+        border: 1px solid rgba(255, 0, 0, 0.3);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ff3c3c;
+        letter-spacing: 1px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    thead {
+        background: rgba(255, 0, 0, 0.2);
+    }
+
+    th {
+        padding: 12px;
+        color: #ff4d4d;
+        font-weight: 600;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    tbody tr {
+        transition: 0.3s;
+    }
+
+    tbody tr:hover {
+        background: rgba(255, 0, 0, 0.15);
+        transform: scale(1.01);
+    }
+
+    .btn-remove {
+        padding: 6px 14px;
+        border-radius: 20px;
+        background: linear-gradient(45deg, #ff0000, #cc0000);
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(255,0,0,0.6);
+    }
+
+    .btn-remove:hover {
+        background: linear-gradient(45deg, #ff3333, #990000);
+        box-shadow: 0 0 15px rgba(255,0,0,1);
+    }
+
+    .empty {
+        text-align: center;
+        padding: 20px;
+        opacity: 0.7;
+    }
+</style>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    <div class="container">
+        <h2>🏋️ Allocated Batches</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>SL NO</th>
+                    <th>Batch</th>
+                    <th>From Time</th>
+                    <th>To Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if data %}
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.BATCH.batch }}</td>
+                        <td>{{ i.BATCH.from_time }}</td>
+                        <td>{{ i.BATCH.to_time }}</td>
+                        <td>
+                            <a class="btn-remove" href="/removeAllocatedBatch/{{ i.id }}">
+                                Remove
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="empty">No batches allocated</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</form>
+</body>
+</html>

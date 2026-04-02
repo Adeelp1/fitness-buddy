@@ -1,0 +1,184 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/addEvent_post">
+  <table width="200" border="1">
+    <tr>
+      <th scope="row">Title</th>
+      <td><label for="textfield1"></label>
+      <input type="text" name="textfield1" id="textfield1" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td><label for="textarea2"></label>
+      <textarea name="textarea2" id="textarea2" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <th scope="row">Venue</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Date</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Time</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" /></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Add" /></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html> -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Add Event</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(120,0,0,0.9)),
+                    url('https://images.unsplash.com/photo-1511578314322-379afb476865');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 40px;
+        border-radius: 15px;
+        width: 400px;
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+        color: white;
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #ff4d4d;
+    }
+
+    table {
+        width: 100%;
+        border: none;
+    }
+
+    th {
+        text-align: left;
+        padding: 10px 0 5px;
+        font-weight: 500;
+    }
+
+    td {
+        padding-bottom: 15px;
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        background: #1e1e1e;
+        color: white;
+        font-size: 14px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+        border: 1px solid #ff4d4d;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(45deg, #ff0000, #990000);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background: linear-gradient(45deg, #ff3333, #cc0000);
+        transform: scale(1.03);
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="form-container">
+<h2>Add Event</h2>
+
+<form id="form1" name="form1" method="post" action="/addEvent_post">
+  <table>
+    <tr>
+      <th scope="row">Title</th>
+      <td>
+      <input type="text" name="textfield1" id="textfield1" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Description</th>
+      <td>
+      <textarea name="textarea2" id="textarea2" cols="45" rows="5"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Venue</th>
+      <td>
+      <input type="text" name="textfield3" id="textfield3" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Date</th>
+      <td>
+      <input type="text" name="textfield4" id="textfield4" />
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Time</th>
+      <td>
+      <input type="text" name="textfield5" id="textfield5" />
+      </td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row">
+        <input type="submit" name="button" id="button" value="Add" />
+      </th>
+    </tr>
+  </table>
+</form>
+
+</div>
+
+</body>
+</html>

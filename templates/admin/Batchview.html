@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">SlNo</th>
+      <th scope="col">Batch</th>
+      <th scope="col">From Time</th>
+      <th scope="col">To Time</th>
+      <th scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>&nbsp;{{ i.batch }}</td>
+      <td>&nbsp;{{ i.from_time }}</td>
+      <td>&nbsp;{{ i.to_time }}</td>
+      <td><a href="//{{ i.id }}">Allocate batch </a><br>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>

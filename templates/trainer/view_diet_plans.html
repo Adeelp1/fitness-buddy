@@ -1,0 +1,166 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+  <tr>
+    <th scope="col">SL_NO</th>
+    <th scope="col">FOOD NAME</th>
+    <th scope="col">DETAILS</th>
+    <th scope="col">TIME</th>
+    <th scope="col">DAY</th>
+    <th scope="col">USER_NAME</th>
+    <th scope="col">Action</th>
+  </tr>
+      {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.food_name }}</td>
+    <td>{{ i.details }}</td>
+    <td>{{ i.time }}</td>
+    <td>{{ i.day }}</td>
+    <td>{{ i.ALLOCATE_BATCH_USER.USER.name }}</td>
+    <td><a href="/delete_diet_plan/{{ i.id }}">delete</a></td>
+  </tr>
+      {% endfor %}
+</table>
+
+</form>
+</body>
+</html> -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Diet Plans</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #000000, #1a0000);
+        color: #fff;
+    }
+
+    .container {
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #ff0000;
+        text-shadow: 0 0 10px rgba(255,0,0,0.7);
+    }
+
+    .table-card {
+        background: rgba(0,0,0,0.7);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255,0,0,0.4);
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    th {
+        background: #ff0000;
+        color: #fff;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 13px;
+    }
+
+    tr:hover {
+        background: rgba(255,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .delete-btn {
+        text-decoration: none;
+        color: white;
+        background: linear-gradient(45deg, #ff0000, #cc0000);
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(255,0,0,0.5);
+    }
+
+    .delete-btn:hover {
+        background: #ff3333;
+        box-shadow: 0 0 15px rgba(255,0,0,0.8);
+    }
+
+    .no-data {
+        text-align: center;
+        padding: 20px;
+        color: #aaa;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">Diet Plans</div>
+
+    <form id="form1" name="form1" method="post" action="">
+        <div class="table-card">
+            <table>
+                <tr>
+                    <th>SL_NO</th>
+                    <th>FOOD NAME</th>
+                    <th>DETAILS</th>
+                    <th>TIME</th>
+                    <th>DAY</th>
+                    <th>USER NAME</th>
+                    <th>ACTION</th>
+                </tr>
+
+                {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.food_name }}</td>
+                    <td>{{ i.details }}</td>
+                    <td>{{ i.time }}</td>
+                    <td>{{ i.day }}</td>
+                    <td>{{ i.ALLOCATE_BATCH_USER.USER.name }}</td>
+                    <td>
+                        <a class="delete-btn" href="/delete_diet_plan/{{ i.id }}">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="no-data">No Diet Plans Found</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">Sno</th>
+      <th scope="col">Title</th>
+      <th scope="col">Tips</th>
+      <th scope="col">date</th>
+      <th scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+      <td>{{ i.title }}</td>
+      <td>{{ i.tips }}</td>
+      <td>{{ i.date }}</td>
+      <td><a href="/deleteTips/{{ i.id }}">delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>View Tips</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #000000, #1a0000);
+        color: #fff;
+    }
+
+    .container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 30px;
+        background: rgba(0,0,0,0.7);
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(255,0,0,0.4);
+    }
+
+    h2 {
+        text-align: center;
+        color: #ff0000;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(255,0,0,0.7);
+    }
+
+    /* 🔍 Search Bar */
+    .search-box {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .search-box input {
+        width: 300px;
+        padding: 10px;
+        border-radius: 8px 0 0 8px;
+        border: none;
+        outline: none;
+    }
+
+    .search-box button {
+        padding: 10px 15px;
+        border: none;
+        background: #ff0000;
+        color: #fff;
+        border-radius: 0 8px 8px 0;
+        cursor: pointer;
+    }
+
+    .search-box button:hover {
+        background: #cc0000;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th {
+        background: #ff0000;
+        padding: 12px;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    tr:hover {
+        background: rgba(255,0,0,0.15);
+    }
+
+    .btn {
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #fff;
+        margin: 2px;
+        display: inline-block;
+    }
+
+    .edit-btn {
+        background: #007bff;
+    }
+
+    .edit-btn:hover {
+        background: #0056b3;
+    }
+
+    .delete-btn {
+        background: #ff0000;
+    }
+
+    .delete-btn:hover {
+        background: #cc0000;
+        box-shadow: 0 0 10px rgba(255,0,0,0.7);
+    }
+
+    /* 📄 Pagination */
+    .pagination {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .pagination a {
+        color: #fff;
+        padding: 8px 12px;
+        margin: 3px;
+        text-decoration: none;
+        border: 1px solid #ff0000;
+        border-radius: 5px;
+    }
+
+    .pagination a:hover {
+        background: #ff0000;
+    }
+
+    .active-page {
+        background: #ff0000;
+    }
+
+    .no-data {
+        text-align: center;
+        padding: 20px;
+        color: #ccc;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>View Tips</h2>
+
+    <!-- 🔍 Search -->
+    <form method="get" class="search-box">
+        <input type="text" name="search" placeholder="Search tips..." value="{{ request.GET.search }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- 📊 Table -->
+    <table>
+        <tr>
+            <th>Sno</th>
+            <th>Title</th>
+            <th>Tips</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+
+        {% if data %}
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.title }}</td>
+                <td>{{ i.tips }}</td>
+                <td>{{ i.date }}</td>
+                <td>
+                    <!-- <a href="/editTips/{{ i.id }}" class="btn edit-btn">Edit</a> -->
+                    <a href="/deleteTips/{{ i.id }}" class="btn delete-btn"
+                       onclick="return confirm('Delete this tip?');">
+                       Delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="no-data">No Tips Found</td>
+            </tr>
+        {% endif %}
+    </table>
+
+    <!-- 📄 Pagination -->
+    <div class="pagination">
+        {% if data.has_previous %}
+            <a href="?page={{ data.previous_page_number }}&search={{ request.GET.search }}">Prev</a>
+        {% endif %}
+
+        {% for num in data.paginator.page_range %}
+            <a href="?page={{ num }}&search={{ request.GET.search }}"
+               class="{% if data.number == num %}active-page{% endif %}">
+               {{ num }}
+            </a>
+        {% endfor %}
+
+        {% if data.has_next %}
+            <a href="?page={{ data.next_page_number }}&search={{ request.GET.search }}">Next</a>
+        {% endif %}
+    </div>
+
+</div>
+
+</body>
+</html>

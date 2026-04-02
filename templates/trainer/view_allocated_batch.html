@@ -1,0 +1,186 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <th scope="col">SLNO</th>
+      <th scope="col">Batch</th>
+      <th scope="col">From Time</th>
+      <th scope="col">To Time</th>
+      <th scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.BATCH.batch }}</td>
+      <td>{{ i.BATCH.from_time }}</td>
+      <td>{{ i.BATCH.to_time }}</td>
+      <td>
+          <a href="/viewMembers/{{ i.id }}">View Members</a>
+      </td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Allocated Batches</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #000000, #1a0000);
+        color: #fff;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1100px;
+        margin: 50px auto;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #ff0000;
+        text-shadow: 0 0 10px rgba(255,0,0,0.6);
+    }
+
+    .card {
+        background: rgba(0,0,0,0.7);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 0 20px rgba(255,0,0,0.2);
+        backdrop-filter: blur(10px);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    thead {
+        background: #ff0000;
+    }
+
+    th {
+        padding: 12px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    tr:hover {
+        background: rgba(255,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        background: #ff0000;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(255,0,0,0.4);
+    }
+
+    .btn:hover {
+        background: #cc0000;
+        box-shadow: 0 0 15px rgba(255,0,0,0.8);
+    }
+
+    @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        thead {
+            display: none;
+        }
+
+        tr {
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        td {
+            text-align: left;
+            padding: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        td::before {
+            content: attr(data-label);
+            font-weight: bold;
+            color: #ff0000;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    
+<div class="container">
+    <div class="title">Allocated Batches</div>
+
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>SL NO</th>
+                    <th>Batch</th>
+                    <th>From Time</th>
+                    <th>To Time</th>
+                    <th>Members</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td data-label="SL NO">{{ forloop.counter }}</td>
+                    <td data-label="Batch">{{ i.BATCH.batch }}</td>
+                    <td data-label="From Time">{{ i.BATCH.from_time }}</td>
+                    <td data-label="To Time">{{ i.BATCH.to_time }}</td>
+                    <td data-label="Members">
+                        <a href="/viewMembers/{{ i.id }}" class="btn">View Members</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</form>
+</body>
+</html>

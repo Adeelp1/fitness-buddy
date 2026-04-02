@@ -1,0 +1,145 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="380" border="1">
+    <tr>
+      <th scope="col">SL NO</th>
+      <th scope="col">Date</th>
+      <th scope="col">User Name</th>
+      <th scope="col">Ammount</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{ i.USER.name }}</td>
+      <td>{{ i.amount }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+
+{#this code is written by adeel#} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment Report</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #2b5876);
+        color: #fff;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 50px auto;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    thead {
+        background: rgba(255,255,255,0.15);
+    }
+
+    th {
+        padding: 12px;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    tr:hover {
+        background: rgba(255,255,255,0.05);
+        transition: 0.3s;
+    }
+
+    .amount {
+        font-weight: bold;
+        color: #00ffcc;
+    }
+
+    .footer {
+        text-align: right;
+        margin-top: 15px;
+        font-size: 14px;
+        opacity: 0.8;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>💳 Payment Report</h2>
+
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>SL NO</th>
+                    <th>Date</th>
+                    <th>User Name</th>
+                    <th>Amount (₹)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.USER.name }}</td>
+                    <td class="amount">₹ {{ i.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="footer">
+            Total Records: {{ data|length }}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/editTrainer_post/{{ data.id }}" enctype="multipart/form-data">
+  <table width="591" height="296" border="1">
+    <tr>
+      <th scope="row">Name</th>
+      <td><label for="textfield1"></label>
+      <input type="text" name="textfield1" id="textfield1" value="{{ data.name }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Place</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.place }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row"><p>Phone_no</p></th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.p_no }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" value="{{ data.email }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Post</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" value="{{ data.post }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Pin</th>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" value="{{ data.pin }}" /></td>
+    </tr>
+      <tr>
+          <th scope="row">Photo</th>
+          <td><label for="textfield7"></label>
+              <img src="{{ data.photo }}" alt="" height="100" width="100"/>
+          <input type="file" name="photo" id="textfield7" value="{{ data.photo }}" /></td>
+      </tr>
+      <tr>
+      <th scope="row">join_date</th>
+      <td><label for="textfield8"></label>
+      <input type="text" name="textfield8" id="textfield8" value="{{ data.join_date }}" /></td>
+    </tr>
+       <tr>
+      <th scope="row">Bio</th>
+      <td><label for="textfield9"></label>
+      <input type="text" name="textfield9" id="textfield9" value="{{ data.bio }}" /></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Update" /></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edit Trainer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)),
+                    url('https://images.unsplash.com/photo-1554284126-aa88f22d8b74');
+        background-size: cover;
+        background-position: center;
+
+        /* 🔥 FIX */
+        min-height: 100vh;
+        overflow-y: auto;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* changed */
+        padding: 40px 15px; /* space around */
+    }
+
+    .container {
+        background: rgba(0,0,0,0.75);
+        padding: 25px;
+        border-radius: 15px;
+
+        /* 🔥 FIX */
+        width: 100%;
+        max-width: 450px;
+
+        box-shadow: 0 0 25px rgba(255,0,0,0.4);
+    }
+
+    h2 {
+        text-align: center;
+        color: #ff3c3c;
+        margin-bottom: 20px;
+    }
+
+    label {
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #1c1c1c;
+        color: #fff;
+        outline: none;
+    }
+
+    input[type="file"] {
+        padding: 6px;
+    }
+
+    .photo-preview {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .photo-preview img {
+        width: 90px;
+        height: 90px;
+        border-radius: 10px;
+        border: 2px solid #ff3c3c;
+        object-fit: cover;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        background: #ff3c3c;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #cc0000;
+    }
+
+    /* 🔥 MOBILE FIX */
+    @media (max-height: 600px) {
+        body {
+            align-items: flex-start;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Edit Trainer</h2>
+
+    <form method="post" action="/editTrainer_post/{{ data.id }}" enctype="multipart/form-data">
+
+        <label>Name</label>
+        <input type="text" name="textfield1" value="{{ data.name }}" required>
+
+        <label>Place</label>
+        <input type="text" name="textfield2" value="{{ data.place }}" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="textfield3" value="{{ data.p_no }}" required>
+
+        <label>Email</label>
+        <input type="text" name="textfield4" value="{{ data.email }}" required>
+
+        <label>Post</label>
+        <input type="text" name="textfield5" value="{{ data.post }}">
+
+        <label>PIN Code</label>
+        <input type="text" name="textfield6" value="{{ data.pin }}">
+
+        <label>Current Photo</label>
+        <div class="photo-preview">
+            <img src="{{ data.photo }}" alt="Trainer Photo">
+        </div>
+
+        <label>Change Photo</label>
+        <input type="file" name="photo">
+
+        <label>Join Date</label>
+        <input type="date" name="textfield8" value="{{ data.join_date }}">
+
+        <label>Bio</label>
+        <input type="text" name="textfield9" value="{{ data.bio }}">
+
+        <button type="submit" class="btn">Update Trainer</button>
+
+    </form>
+</div>
+
+</body>
+</html>

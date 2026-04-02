@@ -1,0 +1,234 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="663" height="196" border="1">
+    <tr>
+      <th scope="col">SL</th>
+      <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Phone_no</th>
+      <th scope="col">Place</th>
+      <th scope="col">Post</th>
+      <th scope="col">Pin</th>
+        <th scope="col">joint_date</th>
+        <th scope="col">Bio</th>
+      <th scope="col">Action</th>
+      <th scope="col">Allocate Batch</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.name }}</td>
+      <td>&nbsp;{{ i.email }}</td>
+      <td>&nbsp;<img src="{{ i.photo }}" alt="" height="100" width="100"/></td>
+      <td>{{ i.p_no }}</td>
+      <td>&nbsp;{{ i.place }}</td>
+      <td>&nbsp;{{ i.post }}</td>
+        <td>&nbsp;{{ i.pin }}</td>
+        <td>&nbsp;{{ i.join_date }}</td>
+        <td>&nbsp;{{ i.bio }}</td>
+      <td><p><a href="/editTrainer/{{ i.id }}">Edit</a></p>
+      <p><a href="/viewTrainer_delete/{{ i.id }}">Delete</a></p></td>
+    <td>
+        <p><a href="/batchAlocationTrainer/{{ i.id }}">Allocate Batch</a></p>
+        <p><a href="/viewAllocatedBatch">View Allocated Batch</a></p>
+    </td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Trainers</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(120,0,0,0.9)),
+                url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1');
+    background-size: cover;
+    color: white;
+}
+
+/* Container */
+.container {
+    width: 95%;
+    margin: 40px auto;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Header */
+th {
+    background: #ff0000;
+    padding: 12px;
+    font-size: 14px;
+}
+
+/* Table Data */
+td {
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Row Hover */
+tr:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Image */
+img {
+    border-radius: 10px;
+    border: 2px solid #ff0000;
+}
+
+/* Buttons */
+a {
+    text-decoration: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin: 3px 0;
+    font-size: 12px;
+}
+
+/* Action Buttons */
+a[href*="editTrainer"] {
+    background: #3498db;
+}
+a[href*="viewTrainer_delete"] {
+    background: #e74c3c;
+}
+a[href*="batchAlocationTrainer"] {
+    background: #2ecc71;
+}
+a[href*="viewAllocatedBatch"] {
+    background: #f39c12;
+}
+
+/* Hover Effects */
+a:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        background: rgba(0,0,0,0.8);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    td {
+        text-align: left;
+        padding: 8px;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        color: #ff4d4d;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Trainer List</h1>
+
+<form id="form1" name="form1" method="post" action="">
+  <table>
+    <tr>
+      <th>SL</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Photo</th>
+      <th>Phone</th>
+      <th>Place</th>
+      <th>Post</th>
+      <th>Pin</th>
+      <th>Join Date</th>
+      <th>Bio</th>
+      <th>Action</th>
+      <th>Batch</th>
+    </tr>
+
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.email }}</td>
+      <td><img src="{{ i.photo }}" height="80" width="80"/></td>
+      <td>{{ i.p_no }}</td>
+      <td>{{ i.place }}</td>
+      <td>{{ i.post }}</td>
+      <td>{{ i.pin }}</td>
+      <td>{{ i.join_date }}</td>
+      <td>{{ i.bio }}</td>
+
+      <td>
+        <a href="/editTrainer/{{ i.id }}">Edit</a><br>
+        <a href="/viewTrainer_delete/{{ i.id }}">Delete</a>
+      </td>
+
+      <td>
+        <a href="/batchAlocationTrainer/{{ i.id }}">Allocate</a><br>
+        <a href="/viewAllocatedBatch">View</a>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </table>
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="663" height="196" border="1">
+    <tr>
+      <th scope="col">SL</th>
+      <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Phone_no</th>
+      <th scope="col">Place</th>
+      <th scope="col">Post</th>
+      <th scope="col">Pin</th>
+        <th scope="col">joint_date</th>
+        <th scope="col">Bio</th>
+      <th scope="col">Action</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.TRAINER.name }}</td>
+      <td>&nbsp;{{ i.TRAINER.email }}</td>
+      <td>&nbsp;<img src="{{ i.TRAINER.photo }}" alt="" height="100" width="100"/></td>
+      <td>{{ i.TRAINER.p_no }}</td>
+      <td>&nbsp;{{ i.TRAINER.place }}</td>
+      <td>&nbsp;{{ i.TRAINER.post }}</td>
+        <td>&nbsp;{{ i.TRAINER.pin }}</td>
+        <td>&nbsp;{{ i.TRAINER.join_date }}</td>
+        <td>&nbsp;{{ i.TRAINER.bio }}</td>
+      <td><p><a href="/allocate_user_to_trainer/{{ i.id }}">Allocate</a></p></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Allocate Trainer</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000, #1a0000);
+    color: #fff;
+}
+
+/* Container */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff0000;
+    text-shadow: 0 0 10px rgba(255,0,0,0.7);
+}
+
+/* Table Wrapper (prevents overflow) */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 12px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0,0,0,0.7);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Header */
+th {
+    background: #ff0000;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+/* Rows */
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Hover Effect */
+tr:hover {
+    background: rgba(255,0,0,0.1);
+    transition: 0.3s;
+}
+
+/* Image */
+img {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    color: #fff;
+    background: #ff0000;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #cc0000;
+    box-shadow: 0 0 10px rgba(255,0,0,0.6);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Allocate Trainer</h2>
+
+    <form method="post">
+        <div class="table-wrapper">
+            <table>
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Photo</th>
+                    <th>Phone</th>
+                    <th>Place</th>
+                    <th>Post</th>
+                    <th>Pin</th>
+                    <th>Join Date</th>
+                    <th>Bio</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.TRAINER.name }}</td>
+                    <td>{{ i.TRAINER.email }}</td>
+                    <td>
+                        <img src="{{ i.TRAINER.photo }}" height="70" width="70"/>
+                    </td>
+                    <td>{{ i.TRAINER.p_no }}</td>
+                    <td>{{ i.TRAINER.place }}</td>
+                    <td>{{ i.TRAINER.post }}</td>
+                    <td>{{ i.TRAINER.pin }}</td>
+                    <td>{{ i.TRAINER.join_date }}</td>
+                    <td>{{ i.TRAINER.bio }}</td>
+                    <td>
+                        <a href="/allocate_user_to_trainer/{{ i.id }}" class="btn">
+                            Allocate
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/workoutVideoAdd_post/{{ id }}" enctype="multipart/form-data">
+  <table width="200" border="1">
+    <tr>
+      <th scope="row">Video</th>
+      <td><label for="textfield1"></label>
+      <input type="file" name="textfield1" id="textfield1"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Title</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Date</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" /></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="button" id="button" value="Add" /></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Add Workout Video</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #000000, #1a0000);
+        color: #fff;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        background: rgba(0, 0, 0, 0.75);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+        width: 400px;
+        backdrop-filter: blur(10px);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #ff0000;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 8px;
+        background: #1a1a1a;
+        color: #fff;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="file"]:focus {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    }
+
+    .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #ff0000;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #cc0000;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <form id="form1" name="form1" method="post" action="/workoutVideoAdd_post/{{ id }}" enctype="multipart/form-data">
+        
+        <div class="card">
+            <h2>Add Workout Video</h2>
+
+            <label>Upload Video</label>
+            <input type="file" name="textfield1" required />
+
+            <label>Title</label>
+            <input type="text" name="textfield2" placeholder="Enter video title" required />
+
+            <label>Date</label>
+            <input type="date" name="textfield3" required />
+
+            <input type="submit" name="button" value="Add Video" class="btn" />
+
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
