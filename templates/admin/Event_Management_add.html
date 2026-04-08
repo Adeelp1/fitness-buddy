@@ -41,93 +41,87 @@
 </body>
 </html> -->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
 <title>Add Event</title>
 
 <style>
     body {
         margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(120,0,0,0.9)),
-                    url('https://images.unsplash.com/photo-1511578314322-379afb476865');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f6f9;
+    }
+
+    .container {
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 100vh;
     }
 
-    .form-container {
-        background: rgba(0, 0, 0, 0.8);
-        padding: 40px;
-        border-radius: 15px;
-        width: 400px;
-        box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
-        color: white;
+    .card {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        width: 420px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
 
-    .form-container h2 {
+    .card h2 {
         text-align: center;
         margin-bottom: 25px;
-        color: #ff4d4d;
+        color: #333;
     }
 
-    table {
-        width: 100%;
-        border: none;
+    .form-group {
+        margin-bottom: 18px;
     }
 
-    th {
-        text-align: left;
-        padding: 10px 0 5px;
-        font-weight: 500;
-    }
-
-    td {
-        padding-bottom: 15px;
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #555;
     }
 
     input[type="text"],
     textarea {
         width: 100%;
         padding: 10px;
-        border: none;
-        border-radius: 8px;
-        outline: none;
-        background: #1e1e1e;
-        color: white;
+        border: 1px solid #ccc;
+        border-radius: 6px;
         font-size: 14px;
+        transition: 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: #4CAF50;
+        outline: none;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
     }
 
     textarea {
         resize: none;
     }
 
-    input[type="text"]:focus,
-    textarea:focus {
-        border: 1px solid #ff4d4d;
-    }
-
-    input[type="submit"] {
+    .btn {
         width: 100%;
         padding: 12px;
+        background: #4CAF50;
         border: none;
-        border-radius: 8px;
-        background: linear-gradient(45deg, #ff0000, #990000);
-        color: white;
+        color: #fff;
         font-size: 16px;
+        border-radius: 6px;
         cursor: pointer;
         transition: 0.3s;
     }
 
-    input[type="submit"]:hover {
-        background: linear-gradient(45deg, #ff3333, #cc0000);
-        transform: scale(1.03);
+    .btn:hover {
+        background: #45a049;
     }
 </style>
 
@@ -135,49 +129,41 @@
 
 <body>
 
-<div class="form-container">
-<h2>Add Event</h2>
+<div class="container">
+    <div class="card">
+        <h2>Add Event</h2>
 
-<form id="form1" name="form1" method="post" action="/addEvent_post">
-  <table>
-    <tr>
-      <th scope="row">Title</th>
-      <td>
-      <input type="text" name="textfield1" id="textfield1" />
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Description</th>
-      <td>
-      <textarea name="textarea2" id="textarea2" cols="45" rows="5"></textarea>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Venue</th>
-      <td>
-      <input type="text" name="textfield3" id="textfield3" />
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Date</th>
-      <td>
-      <input type="text" name="textfield4" id="textfield4" />
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Time</th>
-      <td>
-      <input type="text" name="textfield5" id="textfield5" />
-      </td>
-    </tr>
-    <tr>
-      <th colspan="2" scope="row">
-        <input type="submit" name="button" id="button" value="Add" />
-      </th>
-    </tr>
-  </table>
-</form>
+        <form id="form1" name="form1" method="post" action="/addEvent_post">
 
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="textfield1" id="textfield1" required>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="textarea2" id="textarea2" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Venue</label>
+                <input type="text" name="textfield3" id="textfield3" required>
+            </div>
+
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="textfield4" id="textfield4" required>
+            </div>
+
+            <div class="form-group">
+                <label>Time</label>
+                <input type="time" name="textfield5" id="textfield5" required>
+            </div>
+
+            <button type="submit" class="btn">Add Event</button>
+
+        </form>
+    </div>
 </div>
 
 </body>

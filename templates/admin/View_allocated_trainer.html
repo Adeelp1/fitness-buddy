@@ -35,87 +35,83 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Allocated Trainers</title>
 
 <style>
     body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f9;
         margin: 0;
         padding: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)),
-                    url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1');
-        background-size: cover;
-        background-position: center;
-        color: #fff;
     }
 
     .container {
         width: 90%;
-        margin: 50px auto;
-        background: rgba(0, 0, 0, 0.85);
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 0 25px rgba(255, 0, 0, 0.3);
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     h2 {
         text-align: center;
-        color: #ff0000;
-        margin-bottom: 25px;
-        letter-spacing: 2px;
+        color: #2e7d32;
+        margin-bottom: 20px;
     }
 
     table {
         width: 100%;
         border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    thead {
+        background-color: #2e7d32;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px;
         text-align: center;
     }
 
-    th {
-        background: #ff0000;
-        color: white;
-        padding: 12px;
-        font-size: 15px;
-        text-transform: uppercase;
-    }
-
-    td {
-        padding: 12px;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    tr:hover {
-        background: rgba(255, 0, 0, 0.1);
+    tbody tr {
+        border-bottom: 1px solid #ddd;
         transition: 0.3s;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f8f4;
     }
 
     img {
-        border-radius: 10px;
-        border: 2px solid #ff0000;
+        border-radius: 8px;
+        object-fit: cover;
     }
 
-    .btn {
-        padding: 8px 15px;
-        background: transparent;
-        border: 1px solid #ff0000;
-        color: #ff0000;
+    .btn-remove {
+        display: inline-block;
+        padding: 8px 14px;
+        background-color: #e53935;
+        color: white;
+        border-radius: 6px;
         text-decoration: none;
-        border-radius: 5px;
+        font-size: 14px;
         transition: 0.3s;
     }
 
-    .btn:hover {
-        background: #ff0000;
-        color: #fff;
+    .btn-remove:hover {
+        background-color: #c62828;
     }
 
     .no-data {
         text-align: center;
         padding: 20px;
-        color: #aaa;
+        color: #777;
     }
 
 </style>
@@ -129,33 +125,39 @@
 
     <form id="form1" name="form1" method="post" action="">
         <table>
-            <tr>
-                <th>SLNO</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Photo</th>
-                <th>Action</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>SL NO</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Photo</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
 
-            {% for i in data %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ i.BATCH_TRAINER.TRAINER.name }}</td>
-                <td>{{ i.BATCH_TRAINER.TRAINER.email }}</td>
-                <td>{{ i.BATCH_TRAINER.TRAINER.p_no }}</td>
-                <td>
-                    <img src="{{ i.BATCH_TRAINER.TRAINER.photo }}" height="80" width="80"/>
-                </td>
-                <td>
-                    <a href="/deleteAllocatedTrainer/{{ i.id }}" class="btn">Remove</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="6" class="no-data">No trainers allocated</td>
-            </tr>
-            {% endfor %}
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.BATCH_TRAINER.TRAINER.name }}</td>
+                    <td>{{ i.BATCH_TRAINER.TRAINER.email }}</td>
+                    <td>{{ i.BATCH_TRAINER.TRAINER.p_no }}</td>
+                    <td>
+                        <img src="{{ i.BATCH_TRAINER.TRAINER.photo }}" height="80" width="80"/>
+                    </td>
+                    <td>
+                        <a href="/deleteAllocatedTrainer/{{ i.id }}" class="btn-remove">
+                            Remove
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="no-data">No trainers allocated</td>
+                </tr>
+                {% endfor %}
+            </tbody>
 
         </table>
     </form>

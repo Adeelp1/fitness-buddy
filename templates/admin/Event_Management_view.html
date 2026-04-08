@@ -39,124 +39,190 @@
 <meta charset="UTF-8">
 <title>View Events</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
-    body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(rgba(0,0,0,0.9), rgba(120,0,0,0.9)),
-                    url('https://images.unsplash.com/photo-1515169067865-5387ec356754');
-        background-size: cover;
-        color: white;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f7f2;
+    margin: 0;
+}
 
-    .container {
-        width: 90%;
-        margin: 50px auto;
-        background: rgba(0,0,0,0.7);
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(255,0,0,0.3);
-    }
+/* Container */
+.container {
+    width: 95%;
+    margin: 30px auto;
+}
 
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #ff4d4d;
-    }
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
 
-    table {
+.header h2 {
+    margin: 0;
+    color: #333;
+}
+
+/* Add Button */
+.add-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background: #45a049;
+}
+
+/* Search Bar */
+.search-box {
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    width: 250px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #4CAF50;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+    background: #e8f5e9;
+}
+
+/* Action buttons */
+.action-btn {
+    padding: 6px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    margin: 0 3px;
+}
+
+.edit-btn {
+    background: #43a047;
+    color: white;
+}
+
+.edit-btn:hover {
+    background: #2e7d32;
+}
+
+.delete-btn {
+    background: #c62828;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #8e0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-box input {
         width: 100%;
-        border-collapse: collapse;
-        text-align: center;
     }
-
-    th {
-        background: #ff1a1a;
-        padding: 12px;
-        font-weight: 600;
-    }
-
-    td {
-        padding: 12px;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-
-    tr:hover {
-        background: rgba(255,0,0,0.1);
-    }
-
-    a {
-        text-decoration: none;
-        padding: 6px 12px;
-        margin: 2px;
-        border-radius: 6px;
-        font-size: 14px;
-        transition: 0.3s;
-    }
-
-    a[href*="editEvent"] {
-        background: #28a745;
-        color: white;
-    }
-
-    a[href*="editEvent"]:hover {
-        background: #218838;
-    }
-
-    a[href*="delete"] {
-        background: #dc3545;
-        color: white;
-    }
-
-    a[href*="delete"]:hover {
-        background: #c82333;
-    }
-
-    @media (max-width: 768px) {
-        table {
-            font-size: 12px;
-        }
-    }
+}
 </style>
+
+<script>
+function searchTable() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
 
 </head>
 
 <body>
 
 <div class="container">
-    <h2>Event List</h2>
 
-    <form id="form1" name="form1" method="post" action="">
-      <table>
-        <tr>
-          <th>Sl No</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Venue</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Action</th>
-        </tr>
+    <div class="header">
+        <h2>Manage Events</h2>
+        <a href="/addEvent" class="add-btn">+ Add Event</a>
+    </div>
 
-        {% for i in data %}
-        <tr>
-          <td>{{ forloop.counter }}</td>
-          <td>{{ i.title }}</td>
-          <td>{{ i.description }}</td>
-          <td>{{ i.venue }}</td>
-          <td>{{ i.date }}</td>
-          <td>{{ i.time }}</td>
-          <td>
-            <a href="/editEvent/{{ i.id }}">Edit</a>
-            <a href="/viewEvent_delete/{{ i.id }}">Delete</a>
-          </td>
-        </tr>
-        {% endfor %}
+    <!-- Search Bar -->
+    <div class="search-box">
+        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search events...">
+    </div>
 
-      </table>
-    </form>
+    <div class="card">
+        <form id="form1" name="form1" method="post" action="">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Venue</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ i.title }}</td>
+                        <td>{{ i.description }}</td>
+                        <td>{{ i.venue }}</td>
+                        <td>{{ i.date }}</td>
+                        <td>{{ i.time }}</td>
+                        <td>
+                            <a href="/editEvent/{{ i.id }}" class="action-btn edit-btn">Edit</a>
+                            <a href="/viewEvent_delete/{{ i.id }}" class="action-btn delete-btn">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </form>
+    </div>
+
 </div>
 
 </body>

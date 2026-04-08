@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -37,5 +37,356 @@
     </tr>
   </table>
 </form>
+</body>
+</html> -->
+
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#<meta charset="utf-8">#}
+{#<title>Admin Dashboard</title>#}
+{##}
+{#<style>#}
+{#body {#}
+{#    margin: 0;#}
+{#    font-family: Arial, sans-serif;#}
+{#    background: #f4f6f9;#}
+{#}#}
+{##}
+{#/* Sidebar */#}
+{#.sidebar {#}
+{#    width: 220px;#}
+{#    height: 100vh;#}
+{#    background: #2c3e50;#}
+{#    position: fixed;#}
+{#    color: white;#}
+{#    padding-top: 20px;#}
+{#}#}
+{##}
+{#.sidebar h2 {#}
+{#    text-align: center;#}
+{#    margin-bottom: 30px;#}
+{#}#}
+{##}
+{#.sidebar a {#}
+{#    display: block;#}
+{#    color: white;#}
+{#    padding: 15px;#}
+{#    text-decoration: none;#}
+{#    transition: 0.3s;#}
+{#}#}
+{##}
+{#.sidebar a:hover {#}
+{#    background: #34495e;#}
+{#}#}
+{##}
+{#/* Main */#}
+{#.main {#}
+{#    margin-left: 220px;#}
+{#    padding: 20px;#}
+{#}#}
+{##}
+{#.header {#}
+{#    font-size: 24px;#}
+{#    margin-bottom: 20px;#}
+{#}#}
+{##}
+{#/* Cards */#}
+{#.card-container {#}
+{#    display: grid;#}
+{#    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));#}
+{#    gap: 20px;#}
+{#}#}
+{##}
+{#.card {#}
+{#    background: white;#}
+{#    padding: 20px;#}
+{#    border-radius: 12px;#}
+{#    text-align: center;#}
+{#    text-decoration: none;#}
+{#    color: black;#}
+{#    box-shadow: 0 2px 8px rgba(0,0,0,0.1);#}
+{#    transition: 0.3s;#}
+{#}#}
+{##}
+{#.card img {#}
+{#    width: 60px;#}
+{#    height: 60px;#}
+{#    margin-bottom: 10px;#}
+{#}#}
+{##}
+{#.card h3 {#}
+{#    margin: 10px 0 0;#}
+{#    font-size: 16px;#}
+{#}#}
+{##}
+{#.card:hover {#}
+{#    transform: translateY(-5px);#}
+{#    background: #3498db;#}
+{#    color: white;#}
+{#}#}
+{##}
+{#.card:hover img {#}
+{#    filter: brightness(0) invert(1);#}
+{#}#}
+{##}
+{#</style>#}
+{##}
+{#</head>#}
+{##}
+{#<body>#}
+{##}
+{#<!-- Sidebar -->#}
+{#<div class="sidebar">#}
+{#    <h2>Admin</h2>#}
+{#    <a href="/change_password">Change Password</a>#}
+{#    <a href="/addTrainer">Add Trainer</a>#}
+{#    <a href="/viewTrainer">View Trainer</a>#}
+{#    <a href="/addEvent">Add Event</a>#}
+{#    <a href="/viewEvent">View Event</a>#}
+{#    <a href="/addBatch">Add Batch</a>#}
+{#    <a href="/viewBatch">View Batch</a>#}
+{#    <a href="/viewUsers">View Users</a>#}
+{#    <a href="/view_payment">View Payment</a>#}
+{#</div>#}
+{##}
+{#<!-- Main -->#}
+{#<div class="main">#}
+{#    <div class="header">Dashboard</div>#}
+{##}
+{#    <div class="card-container">#}
+{##}
+{#        <a href="/change_password" class="card">#}
+{#            <img src="https://img.icons8.com/ios-filled/100/password.png"/>#}
+{#            <h3>Change Password</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/addTrainer" class="card">#}
+{#            <img src="https://img.icons8.com/ios-filled/100/add-user-male.png"/>#}
+{#            <h3>Add Trainer</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/viewTrainer" class="card">#}
+{#            <img src="https://img.icons8.com/ios-filled/100/conference-call.png"/>#}
+{#            <h3>View Trainer</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/addEvent" class="card">#}
+{#            <img src="https://img.icons8.com/?size=100&id=10062&format=png&color=000000"/>#}
+{#            <h3>Add Event</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/viewEvent" class="card">#}
+{#            <img src="https://img.icons8.com/ios-filled/100/calendar.png"/>#}
+{#            <h3>View Event</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/addBatch" class="card">#}
+{#            <img src="https://img.icons8.com/ios-filled/100/add-database.png"/>#}
+{#            <h3>Add Batch</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/viewBatch" class="card">#}
+{#            <img src="https://img.icons8.com/ios-filled/100/database.png"/>#}
+{#            <h3>View Batch</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/viewUsers" class="card">#}
+{#            <img src="https://img.icons8.com/?size=100&id=23265&format=png&color=000000"/>#}
+{#            <h3>View Users</h3>#}
+{#        </a>#}
+{##}
+{#        <a href="/view_payment" class="card">#}
+{#            <img src="https://img.icons8.com/ios-filled/100/money.png"/>#}
+{#            <h3>View Payment</h3>#}
+{#        </a>#}
+{##}
+{#    </div>#}
+{#</div>#}
+{##}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        background: #f1f8f4;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 240px;
+        height: 100vh;
+        background: #1e7e34;
+        color: white;
+        padding: 20px;
+        position: fixed;
+    }
+
+    .sidebar h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 22px;
+    }
+
+    .menu a {
+        display: block;
+        padding: 12px 15px;
+        margin: 8px 0;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .menu a:hover {
+        background: #28a745;
+        padding-left: 18px;
+    }
+
+    /* Main */
+    .main {
+        margin-left: 240px;
+        padding: 30px;
+        width: 100%;
+    }
+
+    .header {
+        font-size: 26px;
+        font-weight: bold;
+        color: #1e7e34;
+        margin-bottom: 25px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    /* FULL CLICKABLE CARD */
+    .card {
+        display: block;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #1e7e34;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        background: #e6f4ea;
+    }
+
+    .card h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 13px;
+        color: #555;
+    }
+</style>
+
+</head>
+
+<body>
+
+<form id="form1" name="form1" method="post" action="">
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <div class="menu">
+            <a href="/change_password">Change Password</a>
+            <a href="/addTrainer">Add Trainer</a>
+            <a href="/viewTrainer">View Trainer</a>
+            <a href="/addEvent">Add Event</a>
+            <a href="/viewEvent">View Event</a>
+            <a href="/addBatch">Add Batch</a>
+            <a href="/viewBatch">View Batch</a>
+            <a href="/viewUsers">View Users</a>
+            <a href="/view_payment">View Payment</a>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+        <div class="header">Dashboard</div>
+
+        <div class="cards">
+
+            <a href="/addTrainer" class="card">
+                <h3>Add Trainer</h3>
+                <p>Create new trainer profiles</p>
+            </a>
+
+            <a href="/viewTrainer" class="card">
+                <h3>View Trainers</h3>
+                <p>Manage trainer details</p>
+            </a>
+
+            <a href="/addEvent" class="card">
+                <h3>Add Event</h3>
+                <p>Create new events</p>
+            </a>
+
+            <a href="/viewEvent" class="card">
+                <h3>View Events</h3>
+                <p>Check event list</p>
+            </a>
+
+            <a href="/addBatch" class="card">
+                <h3>Add Batch</h3>
+                <p>Create training batches</p>
+            </a>
+
+            <a href="/viewBatch" class="card">
+                <h3>View Batches</h3>
+                <p>Manage batches</p>
+            </a>
+
+            <a href="/viewUsers" class="card">
+                <h3>View Users</h3>
+                <p>Check user registrations</p>
+            </a>
+
+            <a href="/view_payment" class="card">
+                <h3>View Payment</h3>
+                <p>Track transactions</p>
+            </a>
+
+            <a href="/change_password" class="card">
+                <h3>Change Password</h3>
+                <p>Update admin credentials</p>
+            </a>
+
+        </div>
+    </div>
+
+</div>
+</form>
+
 </body>
 </html>

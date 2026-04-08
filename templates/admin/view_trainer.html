@@ -49,184 +49,204 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8" />
 <title>View Trainers</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(rgba(0,0,0,0.9), rgba(120,0,0,0.9)),
-                url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1');
-    background-size: cover;
-    color: white;
 }
 
-/* Container */
 .container {
     width: 95%;
-    margin: 40px auto;
+    margin: 30px auto;
 }
 
-/* Title */
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    overflow: hidden;
+.title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
 }
 
-/* Header */
-th {
-    background: #ff0000;
-    padding: 12px;
+/* Add button */
+.add-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
     font-size: 14px;
 }
 
-/* Table Data */
-td {
-    padding: 10px;
-    text-align: center;
-    font-size: 13px;
+.add-btn:hover {
+    background: #45a049;
 }
 
-/* Row Hover */
+/* Card */
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Search bar */
+.search-box {
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    width: 300px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #4CAF50;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
 tr:hover {
-    background: rgba(255,255,255,0.1);
+    background: #f1f1f1;
 }
 
 /* Image */
-img {
-    border-radius: 10px;
-    border: 2px solid #ff0000;
+.profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 /* Buttons */
-a {
+.btn {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 2px 0;
+    font-size: 12px;
+    border-radius: 5px;
     text-decoration: none;
     color: white;
-    padding: 6px 10px;
-    border-radius: 6px;
-    display: inline-block;
-    margin: 3px 0;
-    font-size: 12px;
 }
 
-/* Action Buttons */
-a[href*="editTrainer"] {
-    background: #3498db;
-}
-a[href*="viewTrainer_delete"] {
-    background: #e74c3c;
-}
-a[href*="batchAlocationTrainer"] {
-    background: #2ecc71;
-}
-a[href*="viewAllocatedBatch"] {
-    background: #f39c12;
-}
+.btn-edit { background: #2196F3; }
+.btn-delete { background: #f44336; }
+.btn-batch { background: #9C27B0; }
+.btn-view { background: #009688; }
 
-/* Hover Effects */
-a:hover {
-    opacity: 0.8;
-    transform: scale(1.05);
-}
-
-/* Responsive */
-@media(max-width: 768px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    th {
-        display: none;
-    }
-
-    tr {
-        margin-bottom: 15px;
-        background: rgba(0,0,0,0.8);
-        padding: 10px;
-        border-radius: 10px;
-    }
-
-    td {
-        text-align: left;
-        padding: 8px;
-        position: relative;
-    }
-
-    td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: block;
-        color: #ff4d4d;
-    }
+.btn:hover {
+    opacity: 0.85;
 }
 </style>
+
+<script>
+function searchTrainer() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
+
 </head>
 
 <body>
 
 <div class="container">
-<h1>Trainer List</h1>
 
-<form id="form1" name="form1" method="post" action="">
-  <table>
-    <tr>
-      <th>SL</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Photo</th>
-      <th>Phone</th>
-      <th>Place</th>
-      <th>Post</th>
-      <th>Pin</th>
-      <th>Join Date</th>
-      <th>Bio</th>
-      <th>Action</th>
-      <th>Batch</th>
-    </tr>
+    <div class="header">
+        <div class="title">Trainer Management</div>
+        <a href="/addTrainer" class="add-btn">+ Add Trainer</a>
+    </div>
 
-    {% for i in data %}
-    <tr>
-      <td>{{ forloop.counter }}</td>
-      <td>{{ i.name }}</td>
-      <td>{{ i.email }}</td>
-      <td><img src="{{ i.photo }}" height="80" width="80"/></td>
-      <td>{{ i.p_no }}</td>
-      <td>{{ i.place }}</td>
-      <td>{{ i.post }}</td>
-      <td>{{ i.pin }}</td>
-      <td>{{ i.join_date }}</td>
-      <td>{{ i.bio }}</td>
+    <div class="card">
 
-      <td>
-        <a href="/editTrainer/{{ i.id }}">Edit</a><br>
-        <a href="/viewTrainer_delete/{{ i.id }}">Delete</a>
-      </td>
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="searchTrainer()" placeholder="Search trainers...">
+        </div>
 
-      <td>
-        <a href="/batchAlocationTrainer/{{ i.id }}">Allocate</a><br>
-        <a href="/viewAllocatedBatch">View</a>
-      </td>
-    </tr>
-    {% endfor %}
+        <form method="post">
+            <table>
+                <thead>
+                <tr>
+                    <th>SL</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Photo</th>
+                    <th>Phone</th>
+                    <th>Place</th>
+                    <th>Post</th>
+                    <th>Pin</th>
+                    <th>Join Date</th>
+                    <th>Bio</th>
+                    <th>Action</th>
+                    <th>Batch</th>
+                </tr>
+                </thead>
 
-  </table>
-</form>
+                <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.email }}</td>
+                    <td><img src="{{ i.photo }}" class="profile-img"/></td>
+                    <td>{{ i.p_no }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.post }}</td>
+                    <td>{{ i.pin }}</td>
+                    <td>{{ i.join_date }}</td>
+                    <td>{{ i.bio }}</td>
+
+                    <td>
+                        <a href="/editTrainer/{{ i.id }}" class="btn btn-edit">Edit</a><br>
+                        <a href="/viewTrainer_delete/{{ i.id }}" class="btn btn-delete">Delete</a>
+                    </td>
+
+                    <td>
+                        <a href="/batchAlocationTrainer/{{ i.id }}" class="btn btn-batch">Allocate</a><br>
+                        <a href="/viewAllocatedBatch" class="btn btn-view">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </form>
+
+    </div>
 
 </div>
 

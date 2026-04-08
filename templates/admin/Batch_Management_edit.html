@@ -40,120 +40,152 @@
 <title>Edit Batch</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(rgba(0,0,0,0.85), rgba(120,0,0,0.9)),
-                    url('https://images.unsplash.com/photo-1558611848-73f7eb4001a1?auto=format&fit=crop&w=1470&q=80');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f7f6;
+}
 
-    .form-container {
-        background: rgba(0,0,0,0.75);
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 0 25px rgba(255,0,0,0.4);
-        width: 350px;
-        backdrop-filter: blur(10px);
-    }
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    h2 {
-        text-align: center;
-        color: #fff;
-        margin-bottom: 20px;
-    }
+.card {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    width: 400px;
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+.card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2e7d32;
+}
 
-    th {
-        text-align: left;
-        color: #ddd;
-        padding: 10px 0;
-        font-weight: 500;
-    }
+.form-group {
+    margin-bottom: 18px;
+}
 
-    td {
-        padding-bottom: 15px;
-    }
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
 
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 8px;
-        outline: none;
-        background: rgba(255,255,255,0.1);
-        color: #fff;
-        font-size: 14px;
-        transition: 0.3s;
-    }
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
 
-    input[type="text"]:focus {
-        background: rgba(255,255,255,0.2);
-        box-shadow: 0 0 8px rgba(255,0,0,0.6);
-    }
+.form-group input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76,175,80,0.3);
+}
 
-    input[type="submit"] {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        background: linear-gradient(45deg, #ff0000, #990000);
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+.error {
+    color: red;
+    font-size: 13px;
+    display: none;
+}
 
-    input[type="submit"]:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 10px rgba(255,0,0,0.7);
-    }
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #388e3c;
+}
 </style>
+
+<script>
+function validateForm() {
+    let batch = document.getElementById("textfield1");
+    let from = document.getElementById("textfield2");
+    let to = document.getElementById("textfield3");
+
+    let valid = true;
+
+    // Reset errors
+    document.getElementById("batchError").style.display = "none";
+    document.getElementById("fromError").style.display = "none";
+    document.getElementById("toError").style.display = "none";
+
+    if (batch.value.trim() === "") {
+        document.getElementById("batchError").style.display = "block";
+        valid = false;
+    }
+
+    if (from.value === "") {
+        document.getElementById("fromError").style.display = "block";
+        valid = false;
+    }
+
+    if (to.value === "") {
+        document.getElementById("toError").style.display = "block";
+        valid = false;
+    }
+
+    // Time validation (from < to)
+    if (from.value && to.value && from.value >= to.value) {
+        alert("From Time must be less than To Time");
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
 
 </head>
 
 <body>
 
-<div class="form-container">
-<h2>Edit Batch</h2>
+<div class="container">
+    <div class="card">
+        <h2>Edit Batch</h2>
 
-<form id="form1" name="form1" method="post" action="/editBatch_post/{{ data.id }}">
-  <table>
-    <tr>
-      <th scope="row">Batch</th>
-      <td>
-        <input type="text" name="textfield1" id="textfield1" value="{{ data.batch }}" required />
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">From Time</th>
-      <td>
-        <input type="text" name="textfield2" id="textfield2" value="{{ data.from_time }}" required />
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">To Time</th>
-      <td>
-        <input type="text" name="textfield3" id="textfield3" value="{{ data.to_time }}" required />
-      </td>
-    </tr>
-    <tr>
-      <th colspan="2">
-        <input type="submit" name="button" id="button" value="Update Batch" />
-      </th>
-    </tr>
-  </table>
-</form>
+        <form id="form1" name="form1" method="post" action="/editBatch_post/{{ data.id }}" onsubmit="return validateForm()">
+            
+            <div class="form-group">
+                <label>Batch</label>
+                <input type="text" name="textfield1" id="textfield1" value="{{ data.batch }}" required />
+                <div id="batchError" class="error">Batch name is required</div>
+            </div>
 
+            <div class="form-group">
+                <label>From Time</label>
+                <input type="time" name="textfield2" id="textfield2" value="{{ data.from_time }}" required />
+                <div id="fromError" class="error">From time is required</div>
+            </div>
+
+            <div class="form-group">
+                <label>To Time</label>
+                <input type="time" name="textfield3" id="textfield3" value="{{ data.to_time }}" required />
+                <div id="toError" class="error">To time is required</div>
+            </div>
+
+            <input type="submit" name="button" id="button" value="Update Batch" class="btn" />
+
+        </form>
+    </div>
 </div>
 
 </body>
