@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ab0cc59-e1eb-4ef7-8347-cb3553b05818" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/android/app/build.gradle.kts" afterPath="$PROJECT_DIR$/myapp/untitled/android/app/build.gradle.kts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/android/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/myapp/untitled/android/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/add_health_details.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/add_health_details.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/change_password.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/change_password.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/chat.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/chat.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/edit_user_profile_photo.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/edit_user_profile_photo.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/foodrecognition app.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/foodrecognition app.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/home.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/home.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/login.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/login.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/main.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/main.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/register.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/register.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/select_payment.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/select_payment.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/update_health_details.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/update_health_details.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_dietplans.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_dietplans.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_events.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_events.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_health_details.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_health_details.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_payment.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_payment.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_profile.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_profile.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_tips.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_tips.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_trainer.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_trainer.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/lib/view_videos.dart" afterPath="$PROJECT_DIR$/myapp/untitled/lib/view_videos.dart" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/macos/Flutter/GeneratedPluginRegistrant.swift" afterPath="$PROJECT_DIR$/myapp/untitled/macos/Flutter/GeneratedPluginRegistrant.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/pubspec.lock" afterPath="$PROJECT_DIR$/myapp/untitled/pubspec.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/untitled/pubspec.yaml" afterPath="$PROJECT_DIR$/myapp/untitled/pubspec.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myapp/views.py" afterPath="$PROJECT_DIR$/myapp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/trainer/trainer_home_page.html" afterPath="$PROJECT_DIR$/templates/trainer/trainer_home_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/trainer/view_profile.html" afterPath="$PROJECT_DIR$/templates/trainer/view_profile.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,7 +55,7 @@
             <entry file="file://$PROJECT_DIR$/myapp/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="105">
-                  <caret line="720" column="11" lean-forward="true" selection-start-line="720" selection-start-column="11" selection-end-line="720" selection-end-column="11" />
+                  <caret line="720" column="11" lean-forward="false" selection-start-line="720" selection-start-column="11" selection-end-line="720" selection-end-column="11" />
                   <folding>
                     <element signature="e#0#13#0" expanded="true" />
                   </folding>
@@ -193,8 +170,8 @@
                 <state relative-caret-position="357">
                   <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
                   <folding>
-                    <marker date="1776141676753" expanded="true" signature="3963:3972" ph="..." />
-                    <marker date="1776141676753" expanded="true" signature="3963:3980" ph="..." />
+                    <marker date="1776225098847" expanded="true" signature="4139:4148" ph="..." />
+                    <marker date="1776225098847" expanded="true" signature="4139:4156" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -1072,8 +1049,8 @@
         <state relative-caret-position="357">
           <caret line="17" column="50" lean-forward="false" selection-start-line="17" selection-start-column="50" selection-end-line="17" selection-end-column="50" />
           <folding>
-            <marker date="1776141676753" expanded="true" signature="3963:3972" ph="..." />
-            <marker date="1776141676753" expanded="true" signature="3963:3980" ph="..." />
+            <marker date="1776225098847" expanded="true" signature="4139:4148" ph="..." />
+            <marker date="1776225098847" expanded="true" signature="4139:4156" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1105,7 +1082,7 @@
     <entry file="file://$PROJECT_DIR$/myapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="720" column="11" lean-forward="true" selection-start-line="720" selection-start-column="11" selection-end-line="720" selection-end-column="11" />
+          <caret line="720" column="11" lean-forward="false" selection-start-line="720" selection-start-column="11" selection-end-line="720" selection-end-column="11" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

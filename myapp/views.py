@@ -719,7 +719,26 @@ def viewMembers(request, id):
 
 
 def viewProfile(request):
-    return render(request, 'trainer/view_profile.html')
+    user = request.user
+    data = []
+    trainer = Trainers.objects.filter(LOGIN=user)
+
+    for tr in trainer :
+        data.append({
+            "id": tr.id,
+            "name": tr.name,
+            "email": tr.email,
+            "phone": tr.p_no,
+            "place": tr.place,
+            "post": tr.post,
+            "pin": tr.pin,
+            "bio": tr.bio,
+            "photo": tr.photo,
+            "join_date": tr.join_date,
+        })
+    print(data)
+
+    return render(request, 'trainer/view_profile.html', {"data": data})
 
 
 def workoutVideoAdd(request, id):
