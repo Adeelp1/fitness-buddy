@@ -13,9 +13,52 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ip connect',
-      home: ipconnect(),
+      debugShowCheckedModeBanner: false, // 👈 make false to HIDE DEBUG BANNER 
 
+      theme: ThemeData(
+        // scaffoldBackgroundColor: Color(0xFF0B0F14),
+
+        appBarTheme: AppBarTheme(
+          // backgroundColor: Color(0xFF0B0F14),
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Color(0xFFB6FF3B), // 👈 FIX BACK BUTTON GLOBALLY
+          ),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+          centerTitle: true,
+        ),
+
+        // inputDecorationTheme: InputDecorationTheme(
+      //     filled: true,
+      //     fillColor: Color(0xFF12181F),
+      //     labelStyle: TextStyle(color: Color(0xFF9CA3AF)),
+      //     border: OutlineInputBorder(
+      //       borderRadius: BorderRadius.circular(14),
+      //       borderSide: BorderSide.none,
+      //     ),
+      //     focusedBorder: OutlineInputBorder(
+      //       borderRadius: BorderRadius.circular(14),
+      //       borderSide: BorderSide(color: Color(0xFFB6FF3B), width: 1.5),
+      //     ),
+      //   ),
+
+      //   elevatedButtonTheme: ElevatedButtonThemeData(
+      //     style: ElevatedButton.styleFrom(
+      //       backgroundColor: Color(0xFFB6FF3B),
+      //       foregroundColor: Colors.black,
+      //       shape: RoundedRectangleBorder(
+      //         borderRadius: BorderRadius.circular(14),
+      //       ),
+      //     ),
+      //   ),
+      ),
+
+      title: 'Fitness Buddy',
+      home: ipconnect(),
     );
   }
 }
@@ -27,7 +70,7 @@ class ipconnect extends StatefulWidget {
 }
 
 class _ipconnectState extends State<ipconnect> {
-  final ip=new TextEditingController(text:'192.168.29.193');
+  final ip=new TextEditingController(text:'10.96.67.106');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
