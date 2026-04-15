@@ -278,7 +278,7 @@ def forgotpass(request):
 # ADMIN MODULE
 
 def admin_home(request):
-    return render(request,"admin/index.html")
+    return render(request,"admin/admin_home_page.html")
 
 
 def viewTrainer(request):
@@ -389,7 +389,7 @@ def removeAllocatedBatch(request,id):
     batch = AllocateBatchTrainer.objects.get(id=id)
     batch.delete()
 
-    return HttpResponse("<script>alert('batch removed');window.location='/batchRemoveFromTrainer';</script>")
+    return HttpResponse("<script>alert('batch removed');window.location='/viewAllocatedBatch';</script>")
 
 def AllocateUserToTrainer(request, id):
     data = AllocateBatchTrainer.objects.all()
@@ -451,7 +451,7 @@ def editBatch_post(request,id):
         from_time=from_time,
         to_time=to_time
     )
-    return HttpResponse("<script>alert('edited'); window.location='/admin_home'</script>")
+    return HttpResponse("<script>alert('edited'); window.location='/viewBatch'</script>")
 
 
 def changePassword(request):
@@ -488,7 +488,7 @@ def addEvent_post(request):
     obj.time = time
     obj.save()
 
-    return HttpResponse("added")
+    return HttpResponse("<script>alert('added'); window.location='/viewEvent'</script>")
 
 
 def viewEvent(request):
@@ -597,7 +597,7 @@ def deleteAllocatedTrainer(request, id):
 
 # TRAINER MODULE
 def trainer_home(request):
-    return render(request, 'trainer/index.html')
+    return render(request, 'trainer/trainer_home_page.html')
 
 def provideDietPlans(request):
     data = DietPlanes.objects.all()
@@ -1200,11 +1200,13 @@ def edit_profile(request):
     dob = request.POST['dob']
     bio = request.POST['bio']
     level = request.POST['level']
-    if 'photo' in request.FILES:
-     photo = request.FILES['file']
-     fs = FileSystemStorage()
-     path = fs.save(photo.name, photo)
-     Users.objects.filter(id=uid).update(photo=fs.url(path))
+    if 'file' in request.FILES:
+        photo = request.FILES['file']
+        fs = FileSystemStorage()
+        path = fs.save(photo.name, photo)
+        Users.objects.filter(id=uid).update(photo=fs.url(path))
+    else:
+        print("No photo uploaded, skipping photo update.")
     Users.objects.filter(id=uid).update(name=name,email=email,gender=gender,phone=phone,dob=dob,bio=bio,level=level)
 
 
